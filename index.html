@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="utf-8" />
+    <title id="title">青年大学习获取截图</title>
+</head>
+<body>
+    <main>
+        <div id="input-area">
+            <input id="study-url" type="url" placeholder="青年大学习网址" />
+            <button onclick="loadTitleAndImage()">学习</button>
+        </div>
+        <img
+            id="complete-image"
+            style="
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                top: 0;
+                left: 0;
+            "
+            hidden
+        />
+    </main>
+    <script type="text/javascript">
+        function loadTitleAndImage() {
+            const url = document.getElementById("study-url").value;
+            const imageUrl =
+                url.substr(0, url.lastIndexOf("/")) + "/images/end.jpg";
+            const corsBypass = "https://cors-anywhere.herokuapp.com/";
+
+            // set title
+            fetch(corsBypass + url)
+                .then((page) => page.text())
+                .then(
+                    (text) =>
+                        (document.getElementById(
+                            "title"
+                        ).innerText = /<title>(.+)<\/title>/i.exec(text)[1])
+                );
+
+            // set image
+            document.getElementById("complete-image").src = imageUrl;
+            document.getElementById("complete-image").removeAttribute("hidden");
+
+            // hide input area
+            document.getElementById("input-area").style = "display: none;";
+        }
+    </script>
+</body>
