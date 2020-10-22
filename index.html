@@ -5,11 +5,18 @@
 </head>
 <body>
     <main>
-        <div id="input-area">
-            <input id="study-url" type="url" placeholder="青年大学习网址" />
-            <button onclick="loadTitleAndImage()">学习</button>
-            <div>在微信中打开青年大学习，复制网址粘贴到本网页中</div>
-            <img src="./usage.jpg" style="height: 25%; width: 25%" />
+        <div id="input-area" style="text-align: center; font-size: 2em;">
+            <input
+                id="study-url"
+                type="url"
+                placeholder="青年大学习网址"
+                style="margin: 1em 1em; font-size: 1.5em;"
+            />
+            <button onclick="loadTitleAndImage()" style="font-size: 1.5em;">截图</button>
+            <div style="margin: 1em 1em">
+                在微信中打开青年大学习，复制网址粘贴到本网页中
+            </div>
+            <img src="./usage.jpg" style="height: 50%; width: 50%" />
         </div>
         <img
             id="complete-image"
